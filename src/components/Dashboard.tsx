@@ -1,16 +1,22 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { GlobalState } from "../reducers";
+import { ClientState } from "../reducers/clientReducer";
+import { User } from "../services/authService";
+import { AppDispatch } from "../store";
 
 type DashboardProps = {
-  dispatch: any;
+  dispatch: AppDispatch;
+  clients: ClientState;
+  user?: User 
 }
 const Dashboard: React.FC<DashboardProps> = ({
   dispatch,
+  clients,
+  user,
 }) => {
 
   useEffect(() => {
-
   }, []);
 
   return (
@@ -27,5 +33,4 @@ const mapStateToProps = (state: GlobalState) => {
   }
 }
 
-const connectedDashboard = connect(mapStateToProps)(Dashboard);
-export default connectedDashboard;
+export default connect(mapStateToProps)(Dashboard);

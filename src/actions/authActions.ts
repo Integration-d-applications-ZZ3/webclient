@@ -7,6 +7,7 @@ import {
   LOGOUT
 } from "./types"
 import { history } from "../browserHistory";
+import { AppDispatch } from "../store";
 
 const login = (email: string, password: string) => {
   
@@ -14,7 +15,7 @@ const login = (email: string, password: string) => {
   const success = (user: User) => ({ type: LOGIN_SUCCESS, user });
   const failure = (error: string) => ({ type: LOGIN_FAILURE, error });
 
-  return (dispatch: any) => {
+  return (dispatch: AppDispatch) => {
     dispatch(request({ email }));
     authService
       .login(email, password)

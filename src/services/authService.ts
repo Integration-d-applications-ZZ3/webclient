@@ -38,7 +38,7 @@ const login = (email: string, password: string): Promise<User> => {
 }
 
 const checkResponse = (response: Response) => {
-  return response.json().then((data: any) => {
+  return response.json().then(data => {
     if (!response.ok) {
       if (response.status === 401) {
         logout();

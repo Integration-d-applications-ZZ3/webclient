@@ -17,6 +17,7 @@ import { alertActions } from "./actions/alertActions";
 import { GlobalState } from "./reducers";
 import { history } from "./browserHistory" 
 import { AlertState } from "./reducers/alertReducer";
+import { AppDispatch } from "./store";
 // TODO: utiliser les nested routes pour mieux gérer le layout
 
 const NotFound = () => {
@@ -24,7 +25,7 @@ const NotFound = () => {
 }
 
 type AppProps = {
-  dispatch: any;
+  dispatch: AppDispatch;
   alert: AlertState;
 }
 const App: React.FC<AppProps> = ({ dispatch, alert }) => {

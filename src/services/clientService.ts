@@ -11,10 +11,12 @@ export interface Client {
 
 const getClients = async (): Promise<Client[]> => {
   const clients = await fetch(`${constants.API_BASE_URL}/clients`, {
-    method: "GET",
+    /* @ts-ignore */ 
     headers: {
       "Content-Type": "application/json",
-    }
+      ...authService.authHeader(),
+    },
+    method: "GET",
   }).then(authService.checkResponse);
   
   return clients as Client[];

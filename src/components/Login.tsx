@@ -3,9 +3,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { authActions } from "../actions/authActions";
 import { GlobalState } from "../reducers";
+import { AppDispatch } from "../store";
 
 type LoginProps = {
-  dispatch: any;
+  dispatch: AppDispatch;
 }
 const Login: React.FC<LoginProps> = ({ dispatch }) => {
 
@@ -14,6 +15,7 @@ const Login: React.FC<LoginProps> = ({ dispatch }) => {
     const { email, password } = Object.fromEntries(
       new FormData(evt.currentTarget).entries()
     );
+    // @ts-ignore
     dispatch(authActions.login(email.toString(), password.toString()));
   }
 

@@ -4,13 +4,15 @@ import {
   CLIENTS_GETALL_REQUEST,
 } from "./types";
 import { Client, clientService } from "../services/clientService";
+import { AppDispatch } from "../store";
 
 const getAll = () => {
+
   const request = () => ({ type: CLIENTS_GETALL_REQUEST });
   const success = (clients: Client[]) => ({ type: CLIENTS_GETALL_SUCCESS, clients });
   const failure = (error: string) => ({ type: CLIENTS_GETALL_FAILURE, error });
 
-  return (dispatch: any) => {
+  return (dispatch: AppDispatch) => {
     dispatch(request());
     clientService
       .getClients()

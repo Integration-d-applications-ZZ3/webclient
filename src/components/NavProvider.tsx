@@ -26,6 +26,7 @@ import { Link } from 'react-router-dom';
 import { authActions } from "../actions/authActions";
 import constants from "../constants";
 import { history } from "../browserHistory";
+import { AppDispatch } from "../store";
 
 const drawerWidth = 240;
 
@@ -113,7 +114,7 @@ const LoggedOutList = () => {
   );
 }
 
-const LoggedInList = ({ dispatch }: {dispatch: any}) => {
+const LoggedInList = ({ dispatch }: {dispatch: AppDispatch}) => {
   
   const handleLogout = () => {
     dispatch(authActions.logout());
@@ -136,7 +137,7 @@ const LoggedInList = ({ dispatch }: {dispatch: any}) => {
 }
 
 type NavProviderProps = {
-  dispatch: any;
+  dispatch: AppDispatch;
 }
 const NavProvider: React.FC<NavProviderProps> = ({
   dispatch,
