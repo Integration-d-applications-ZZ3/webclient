@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { GlobalState } from "../reducers";
 
-const Dashboard: React.FC = () => {
+type DashboardProps = {
+  dispatch: any;
+}
+const Dashboard: React.FC<DashboardProps> = ({
+  dispatch,
+}) => {
+
+  useEffect(() => {
+
+  }, []);
+
   return (
     <div>dashboard</div>
   );
 }
 
-export default Dashboard;
+const mapStateToProps = (state: GlobalState) => {
+  const { clients, auth } = state;
+  const { user } = auth;
+  return {
+    clients,
+    user,
+  }
+}
+
+const connectedDashboard = connect(mapStateToProps)(Dashboard);
+export default connectedDashboard;

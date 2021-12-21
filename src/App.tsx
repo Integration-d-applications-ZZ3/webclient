@@ -7,10 +7,10 @@ import {
   Switch,
   Router,
 } from "react-router-dom";
-import { NavProvider } from "./components/NavProvider";
+import NavProvider from "./components/NavProvider";
 import ColorModeProvider from "./components/ColorModeProvider";
 import { connect } from "react-redux";
-import { Login } from "./components/Login";
+import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import { alertActions } from "./actions/alertActions";
@@ -87,5 +87,4 @@ const mapStateToProps = (state: GlobalState) => {
   return { alert };
 }
 
-const connectedApp = connect(mapStateToProps)(App);
-export { connectedApp as App };
+export default connect(mapStateToProps)(App);

@@ -98,5 +98,4 @@ const mapStateToProps = (state: GlobalState) => {
   return { loggingIn };
 }
 
-const connectedLoginPage = connect(mapStateToProps)(Login);
-export { connectedLoginPage as Login };
+export default connect(mapStateToProps)(Login);

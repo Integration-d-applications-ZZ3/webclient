@@ -204,5 +204,4 @@ const NavProvider: React.FC<NavProviderProps> = ({
   );
 }
 
-const connectedNavProvider = connect()(NavProvider);
-export { connectedNavProvider as NavProvider };
+export default connect()(NavProvider);
