@@ -10,16 +10,16 @@ export interface AlertState {
 const defaultAlertState: AlertState = {
   type: "info",
   message: ""
-}
+};
 export const alertReducer = (state: AlertState = defaultAlertState, action: AnyAction): AlertState => {
   switch(action.type) {
-    case ALERT_SUCCESS:
-      return { type: "success", message: action.message };
-    case ALERT_ERROR:
-      return { type: "error", message: action.message };
-    case ALERT_CLEAR:
-      return { type: "info", message: "" };
-    default:
-      return state;
+  case ALERT_SUCCESS:
+    return { type: "success", message: action.message };
+  case ALERT_ERROR:
+    return { type: "error", message: action.message };
+  case ALERT_CLEAR:
+    return { type: "info", message: "" };
+  default:
+    return state;
   }
-}
+};

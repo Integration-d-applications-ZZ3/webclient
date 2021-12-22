@@ -6,7 +6,11 @@ export interface User {
   email?: string;
 }
 
-const authHeader = () => {
+export interface AuthorizationHeader {
+  Authorization?: string;
+}
+
+const authHeader = (): AuthorizationHeader => {
   const user: User = JSON.parse(
     localStorage.getItem(constants.USER_LOCAL_STORAGE_KEY) ?? "{}"
   );
@@ -14,7 +18,7 @@ const authHeader = () => {
     return { "Authorization": `Bearer ${user.token}` };
   }
   return {};
-}
+};
 
 const login = (email: string, password: string): Promise<User> => {
   return fetch(`${constants.API_BASE_URL}/login`, {
@@ -24,20 +28,18 @@ const login = (email: string, password: string): Promise<User> => {
     },
     body: JSON.stringify({ email, password }),
   })
-  .then(checkResponse)
-  .then(data => {
-    const user = data as User;
-    console.log('Setting user:');
-    console.log({user});
-    localStorage.setItem(
-      constants.USER_LOCAL_STORAGE_KEY,
-      JSON.stringify(user)
-    );
-    return user;
-  });
-}
+    .then(checkResponse)
+    .then(data => {
+      const user = data as User;
+      localStorage.setItem(
+        constants.USER_LOCAL_STORAGE_KEY,
+        JSON.stringify(user)
+      );
+      return user;
+    });
+};
 
-const checkResponse = (response: Response) => {
+const checkResponse = (response: Response): Promise<unknown> => {
   return response.json().then(data => {
     if (!response.ok) {
       if (response.status === 401) {
@@ -49,16 +51,15 @@ const checkResponse = (response: Response) => {
     }
     return data;
   });
-}
+};
 
-const logout = () => {
-  console.log("logging out!");
+const logout = (): void => {
   localStorage.removeItem(constants.USER_LOCAL_STORAGE_KEY);
-}
+};
 
 export const authService = {
   authHeader,
   login,
   logout,
   checkResponse,
-}
+};

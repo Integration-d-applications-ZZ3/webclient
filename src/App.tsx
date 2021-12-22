@@ -15,19 +15,19 @@ import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import { alertActions } from "./actions/alertActions";
 import { GlobalState } from "./reducers";
-import { history } from "./browserHistory" 
+import { history } from "./browserHistory";
 import { AlertState } from "./reducers/alertReducer";
 import { AppDispatch } from "./store";
 // TODO: utiliser les nested routes pour mieux gérer le layout
 
 const NotFound = () => {
-  return <div>404</div>
-}
+  return <div>404</div>;
+};
 
 type AppProps = {
   dispatch: AppDispatch;
   alert: AlertState;
-}
+};
 const App: React.FC<AppProps> = ({ dispatch, alert }) => {
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -38,9 +38,9 @@ const App: React.FC<AppProps> = ({ dispatch, alert }) => {
 
   const handleClose = () => {
     setSnackbarOpen(false);
-  }
+  };
 
-  history.listen((location, action) => {
+  history.listen(() => {
     dispatch(alertActions.clear());
   });
 
@@ -52,6 +52,10 @@ const App: React.FC<AppProps> = ({ dispatch, alert }) => {
             open={snackbarOpen}
             autoHideDuration={5000}
             onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "center"
+            }}
           >
             <Alert
               severity={alert.type}
@@ -81,11 +85,11 @@ const App: React.FC<AppProps> = ({ dispatch, alert }) => {
       </Router>
     </ColorModeProvider>
   );
-}
+};
 
 const mapStateToProps = (state: GlobalState) => {
   const { alert } = state;
   return { alert };
-}
+};
 
 export default connect(mapStateToProps)(App);

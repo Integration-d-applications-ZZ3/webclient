@@ -9,13 +9,13 @@ export interface ClientState {
 }
 export const clientReducer = (state: ClientState = {}, action: AnyAction): ClientState => {
   switch (action.type) {
-    case CLIENTS_GETALL_REQUEST:
-      return { loading: true };
-    case CLIENTS_GETALL_SUCCESS:
-      return { clients: action.clients };
-    case CLIENTS_GETALL_FAILURE:
-      return { error: action.error };
-    default:
-      return state;
+  case CLIENTS_GETALL_REQUEST:
+    return { loading: true };
+  case CLIENTS_GETALL_SUCCESS:
+    return { clients: action.clients };
+  case CLIENTS_GETALL_FAILURE:
+    return { error: action.error };
+  default:
+    return state;
   }
-}
+};

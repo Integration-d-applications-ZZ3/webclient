@@ -9,5 +9,5 @@ interface IColorModeContext {
 }
 export const ColorModeContext = createContext<IColorModeContext>({
   mode: "light",
-  toggleColorMode: () => {}
+  toggleColorMode: () => { /* empty */ }
 });

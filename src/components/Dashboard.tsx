@@ -17,12 +17,13 @@ const Dashboard: React.FC<DashboardProps> = ({
 }) => {
 
   useEffect(() => {
+    // TODO
   }, []);
 
   return (
     <div>dashboard</div>
   );
-}
+};
 
 const mapStateToProps = (state: GlobalState) => {
   const { clients, auth } = state;
@@ -30,7 +31,7 @@ const mapStateToProps = (state: GlobalState) => {
   return {
     clients,
     user,
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(Dashboard);

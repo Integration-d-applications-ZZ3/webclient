@@ -17,7 +17,7 @@ const Login: React.FC<LoginProps> = ({ dispatch }) => {
     );
     // @ts-ignore
     dispatch(authActions.login(email.toString(), password.toString()));
-  }
+  };
 
   return (
     <Box
@@ -93,11 +93,11 @@ const Login: React.FC<LoginProps> = ({ dispatch }) => {
       </Container>
     </Box>
   );
-}
+};
 
 const mapStateToProps = (state: GlobalState) => {
   const { loggingIn } = state.auth;
   return { loggingIn };
-}
+};
 
 export default connect(mapStateToProps)(Login);

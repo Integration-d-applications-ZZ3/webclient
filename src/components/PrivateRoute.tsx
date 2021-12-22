@@ -16,16 +16,16 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
       {...props}
       render={props =>
         localStorage.getItem(constants.USER_LOCAL_STORAGE_KEY)
-        ? <Component {...props} />
-        : <Redirect
+          ? <Component {...props} />
+          : <Redirect
             to={{
               pathname: "/login",
-              state: { from: props.location }
+              state: { from: props.location } // eslint-disable-line
             }}
           />
       } 
     />
   );
-}
+};
 
 export default PrivateRoute;

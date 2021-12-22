@@ -1,5 +1,5 @@
 import constants from "../constants";
-import { authService } from "./authService"
+import { authService } from "./authService";
 
 export interface Client {
   id: number;
@@ -20,8 +20,8 @@ const getClients = async (): Promise<Client[]> => {
   }).then(authService.checkResponse);
   
   return clients as Client[];
-}
+};
 
 export const clientService = {
   getClients,
-}
+};

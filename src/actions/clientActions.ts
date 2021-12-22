@@ -6,7 +6,7 @@ import {
 import { Client, clientService } from "../services/clientService";
 import { AppDispatch } from "../store";
 
-const getAll = () => {
+const getAll = (): (dispatch: AppDispatch) => void => {
 
   const request = () => ({ type: CLIENTS_GETALL_REQUEST });
   const success = (clients: Client[]) => ({ type: CLIENTS_GETALL_SUCCESS, clients });
@@ -20,10 +20,10 @@ const getAll = () => {
         dispatch(success(clients));
       }, (error: string) => {
         dispatch(failure(error));
-      })
-  }
-}
+      });
+  };
+};
 
 export const clientActions = {
   getAll,
-}
+};

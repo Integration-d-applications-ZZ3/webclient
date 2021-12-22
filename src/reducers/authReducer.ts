@@ -16,15 +16,15 @@ const initialState = user ? { loggedIn: true, user } : {};
 
 export const authReducer = (state: UserState = initialState, action: AnyAction): UserState => {
   switch (action.type) {
-    case LOGIN_REQUEST:
-      return { loggingIn: true, user: action.user };
-    case LOGIN_SUCCESS:
-      return { loggedIn: true, user: action.user };
-    case LOGIN_FAILURE:
-      return {};
-    case LOGOUT:
-      return {};
-    default:
-      return state;
+  case LOGIN_REQUEST:
+    return { loggingIn: true, user: action.user };
+  case LOGIN_SUCCESS:
+    return { loggedIn: true, user: action.user };
+  case LOGIN_FAILURE:
+    return {};
+  case LOGOUT:
+    return {};
+  default:
+    return state;
   }
-}
+};

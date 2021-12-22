@@ -1,5 +1,5 @@
 import { createTheme, ThemeProvider, useMediaQuery } from "@mui/material";
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react";
 import constants from "../constants";
 import { ColorMode, ColorModeContext, ColorModes } from "../contexts/colorModeContext";
 import { theme as themeJson } from "../themes";
@@ -12,7 +12,7 @@ const ColorModeProvider: React.FC = ({ children }) => {
     const newMode = mode === "light" ? "dark" : "light";
     setMode(newMode);
     localStorage.setItem(constants.COLOR_MODE_LOCALE_STORAGE_KEY, newMode);
-  }
+  };
 
   useEffect(() => {
     try {
@@ -40,6 +40,6 @@ const ColorModeProvider: React.FC = ({ children }) => {
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
-}
+};
 
 export default ColorModeProvider;
