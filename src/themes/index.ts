@@ -39,11 +39,6 @@ export const theme: ThemeOptions = {
         }
       }
     },
-    MuiButtonBase: {
-      defaultProps: {
-        disableRipple: true
-      }
-    },
     MuiCardContent: {
       styleOverrides: {
         root: {

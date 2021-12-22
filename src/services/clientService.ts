@@ -11,7 +11,6 @@ export interface Client {
 
 const getClients = async (): Promise<Client[]> => {
   const clients = await fetch(`${constants.API_BASE_URL}/clients`, {
-    /* @ts-ignore */ 
     headers: {
       "Content-Type": "application/json",
       ...authService.authHeader(),
