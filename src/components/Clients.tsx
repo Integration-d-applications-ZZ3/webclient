@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CircularProgress from "@mui/material/CircularProgress";
 import { connect } from "react-redux";
 import { clientActions } from "../actions/clientActions";
 import { GlobalState } from "../reducers";
@@ -20,7 +21,11 @@ const Clients: React.FC<ClientsProps> = ({
     clientActions.getAll()(dispatch);
   }, []);
 
-  // Ajouter des actions ? supprimer un client, etc...
+  if (clients.loading) {
+    return (
+      <CircularProgress />
+    );
+  }
 
   return (
     <TableContainer component={Paper}>

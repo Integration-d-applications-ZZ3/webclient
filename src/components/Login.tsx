@@ -1,5 +1,6 @@
 import { Box, Button, Container, Grid, TextField, Typography } from "@mui/material";
 import React from "react";
+import { LinearProgress } from "@mui/material";
 import { connect } from "react-redux";
 import { authActions } from "../actions/authActions";
 import { GlobalState } from "../reducers";
@@ -7,8 +8,12 @@ import { AppDispatch } from "../store";
 
 type LoginProps = {
   dispatch: AppDispatch;
+  loggingIn?: boolean;
 }
-const Login: React.FC<LoginProps> = ({ dispatch }) => {
+const Login: React.FC<LoginProps> = ({
+  dispatch,
+  loggingIn = false,
+}) => {
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -89,6 +94,10 @@ const Login: React.FC<LoginProps> = ({ dispatch }) => {
             </Button>
           </Box>
         </form>
+        {loggingIn
+          ? <Box sx={{ width: "100%", ml: -3 }}><LinearProgress /></Box>
+          : null
+        }
       </Container>
     </Box>
   );
