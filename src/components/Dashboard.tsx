@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { clientActions } from "../actions/clientActions";
 import { GlobalState } from "../reducers";
 import { ClientState } from "../reducers/clientReducer";
 import { User } from "../services/authService";
@@ -17,11 +18,13 @@ const Dashboard: React.FC<DashboardProps> = ({
 }) => {
 
   useEffect(() => {
-    // TODO
+    clientActions.getAll()(dispatch);
   }, []);
 
   return (
-    <div>dashboard</div>
+    <>
+      dashboard (WIP)
+    </>
   );
 };
 

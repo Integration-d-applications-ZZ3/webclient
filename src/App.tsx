@@ -18,11 +18,9 @@ import { GlobalState } from "./reducers";
 import { history } from "./browserHistory";
 import { AlertState } from "./reducers/alertReducer";
 import { AppDispatch } from "./store";
+import Landing from "./components/Landing";
+import Clients from "./components/Clients";
 // TODO: utiliser les nested routes pour mieux gérer le layout
-
-const NotFound = () => {
-  return <div>404</div>;
-};
 
 type AppProps = {
   dispatch: AppDispatch;
@@ -66,7 +64,7 @@ const App: React.FC<AppProps> = ({ dispatch, alert }) => {
           <Switch>
             <Route
               path="/"
-              render={NotFound}
+              component={Landing}
               exact
             />
             <Route
@@ -79,7 +77,12 @@ const App: React.FC<AppProps> = ({ dispatch, alert }) => {
               path="/dashboard"
               exact
             />
-            <Route component={NotFound} /> 
+            <PrivateRoute
+              component={Clients}
+              path="/clients"
+              exact
+            />
+            <Route render={() => <div>404</div>} /> 
           </Switch>
         </NavProvider>
       </Router>

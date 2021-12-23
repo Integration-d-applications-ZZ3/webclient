@@ -21,6 +21,9 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
+import HomeIcon from "@mui/icons-material/Home";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { ColorModeContext } from "../contexts/colorModeContext";
 import { Link } from "react-router-dom";
 import { authActions } from "../actions/authActions";
@@ -87,7 +90,7 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== "open"})
     whiteSpace: "nowrap",
     boxSizing: "border-box",
     ...(open && {
-      ...openedMixin(theme),
+      ...openedMixin  (theme),
       "& .MuiDrawer-paper": openedMixin(theme),
     }),
     ...(!open && {
@@ -102,13 +105,23 @@ const LoggedOutList = () => {
     <List>
       <ListItem 
         component={Link} 
+        to="/"
+        button 
+      >
+        <ListItemIcon>
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText primary="Accueil" />
+      </ListItem>
+      <ListItem 
+        component={Link} 
         to="/login"
         button 
       >
         <ListItemIcon>
           <LoginIcon />
         </ListItemIcon>
-        <ListItemText primary="Login" />
+        <ListItemText primary="Se connecter" />
       </ListItem>
     </List>
   );
@@ -117,7 +130,7 @@ const LoggedOutList = () => {
 type LoggedInListProps = {
   dispatch: AppDispatch;
 }
-const LoggedInList: React.FC<LoggedInListProps> = (({
+const LoggedInList: React.FC<LoggedInListProps> = ({
   dispatch
 }) => {
   
@@ -128,6 +141,36 @@ const LoggedInList: React.FC<LoggedInListProps> = (({
 
   return (
     <List>
+      <ListItem 
+        component={Link} 
+        to="/"
+        button 
+      >
+        <ListItemIcon>
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText primary="Accueil" />
+      </ListItem>
+      <ListItem 
+        component={Link} 
+        to="/dashboard"
+        button 
+      >
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Tableau de bord" />
+      </ListItem>
+      <ListItem 
+        component={Link} 
+        to="/clients"
+        button 
+      >
+        <ListItemIcon>
+          <PeopleAltIcon />
+        </ListItemIcon>
+        <ListItemText primary="Clients" />
+      </ListItem>
       <ListItem
         onClick={handleLogout}
         button 
@@ -135,11 +178,11 @@ const LoggedInList: React.FC<LoggedInListProps> = (({
         <ListItemIcon>
           <LogoutIcon />
         </ListItemIcon>
-        <ListItemText primary="Logout" />
+        <ListItemText primary="Se déconnecter" />
       </ListItem>
     </List>
   );
-});
+};
 
 const ConnectedLoggedInList = connect()(LoggedInList);
 
@@ -196,7 +239,7 @@ const NavProvider: React.FC = ({
             <ListItemIcon>
               {mode === "light" ? <DarkModeIcon /> : <LightModeIcon />}
             </ListItemIcon>
-            <ListItemText primary="Toggle Mode" />
+            <ListItemText primary="Changer le mode" />
           </ListItem>
         </List>
       </Drawer>

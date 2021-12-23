@@ -15,8 +15,7 @@ const Login: React.FC<LoginProps> = ({ dispatch }) => {
     const { email, password } = Object.fromEntries(
       new FormData(evt.currentTarget).entries()
     );
-    // @ts-ignore
-    dispatch(authActions.login(email.toString(), password.toString()));
+    authActions.login(email.toString(), password.toString())(dispatch);
   };
 
   return (
