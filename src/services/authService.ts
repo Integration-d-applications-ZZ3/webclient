@@ -40,7 +40,8 @@ const login = (email: string, password: string): Promise<User> => {
 };
 
 const checkResponse = (response: Response): Promise<unknown> => {
-  return response.json().then(data => {
+  return response.text().then(text => {
+    const data = text && JSON.parse(text);
     if (!response.ok) {
       if (response.status === 401) {
         logout();
