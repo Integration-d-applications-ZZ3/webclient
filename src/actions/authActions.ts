@@ -21,7 +21,7 @@ const login = (email: string, password: string): (dispatch: AppDispatch) => void
     authService
       .login(email, password)
       .then((user: User) => {
-        dispatch(success(user));  
+        dispatch(success({ email, ...user }));  
         history.push("/dashboard");
       }, (error: (string | Error)) => {
         const message = error instanceof Error ? error.message : error;

@@ -5,13 +5,16 @@ import { connect } from "react-redux";
 import { authActions } from "../actions/authActions";
 import { GlobalState } from "../reducers";
 import { AppDispatch } from "../store";
+import { Redirect } from "react-router-dom";
 
 type LoginProps = {
   dispatch: AppDispatch;
+  loggedIn?: boolean;
   loggingIn?: boolean;
 }
 const Login: React.FC<LoginProps> = ({
   dispatch,
+  loggedIn = false,
   loggingIn = false,
 }) => {
 
@@ -22,6 +25,10 @@ const Login: React.FC<LoginProps> = ({
     );
     authActions.login(email.toString(), password.toString())(dispatch);
   };
+
+  if (loggedIn) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <Box
@@ -92,20 +99,24 @@ const Login: React.FC<LoginProps> = ({
             >
               Se connecter
             </Button>
+            {loggingIn
+              ? (
+                <Box sx={{ width: "100%", my: 3 }}>
+                  <LinearProgress />
+                </Box>
+              )
+              : null
+            }
           </Box>
         </form>
-        {loggingIn
-          ? <Box sx={{ width: "100%", ml: -3 }}><LinearProgress /></Box>
-          : null
-        }
       </Container>
     </Box>
   );
 };
 
 const mapStateToProps = (state: GlobalState) => {
-  const { loggingIn } = state.auth;
-  return { loggingIn };
+  const { loggingIn, loggedIn } = state.auth;
+  return { loggingIn, loggedIn };
 };
 
 export default connect(mapStateToProps)(Login);

@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import {
+  Grid,
   Toolbar,
   List,
   CssBaseline,
@@ -30,6 +31,8 @@ import { authActions } from "../actions/authActions";
 import constants from "../constants";
 import { history } from "../browserHistory";
 import { AppDispatch } from "../store";
+import { GlobalState } from "../reducers";
+import { User } from "../services/authService";
 
 const drawerWidth = 240;
 
@@ -131,7 +134,7 @@ type LoggedInListProps = {
   dispatch: AppDispatch;
 }
 const LoggedInList: React.FC<LoggedInListProps> = ({
-  dispatch
+  dispatch,
 }) => {
   
   const handleLogout = () => {
@@ -186,8 +189,13 @@ const LoggedInList: React.FC<LoggedInListProps> = ({
 
 const ConnectedLoggedInList = connect()(LoggedInList);
 
-const NavProvider: React.FC = ({
-  children
+type NavProviderProps = {
+  dispatch: AppDispatch;
+  user?: User;
+}
+const NavProvider: React.FC<NavProviderProps> = ({
+  children,
+  user,
 }) => {
   const [open, setOpen] = useState(false);
   const { mode, toggleColorMode } = useContext(ColorModeContext);
@@ -217,9 +225,25 @@ const NavProvider: React.FC = ({
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Gestion des stocks
-          </Typography>
+          <Grid
+            direction="row"
+            justifyContent="space-between"        
+            container
+          >
+            <Grid item>
+              <Typography variant="h6" noWrap component="div">
+                Gestion des stocks
+              </Typography>
+            </Grid>
+            {user?.email && user?.role
+              ?
+              <Grid item>
+                <Typography variant="body2" noWrap component="div">
+                  Connecté en tant que {user.email} ({user.role})
+                </Typography>
+              </Grid>
+              : null}
+          </Grid>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -251,4 +275,12 @@ const NavProvider: React.FC = ({
   );
 };
 
-export default connect()(NavProvider);
+const mapStateToProps = (state: GlobalState) => {
+  const { auth } = state;
+  const { user } = auth;
+  return {
+    user,
+  };
+};
+
+export default connect(mapStateToProps)(NavProvider);
