@@ -238,7 +238,7 @@ const NavProvider: React.FC<NavProviderProps> = ({
             {user?.email && user?.role
               ?
               <Grid item>
-                <Typography variant="body2" noWrap component="div">
+                <Typography variant="body2" component="div">
                   Connecté en tant que {user.email} ({user.role})
                 </Typography>
               </Grid>

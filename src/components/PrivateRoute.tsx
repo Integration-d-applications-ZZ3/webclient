@@ -3,7 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 import constants from "../constants";
 
 type PrivateRouteProps = {
-  component: any;
+  component: any; //ComponentType<unknown>;
   path: string;
   exact: boolean;
 }

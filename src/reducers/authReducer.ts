@@ -12,7 +12,9 @@ export interface UserState {
 const user: User = JSON.parse(
   localStorage.getItem(constants.USER_LOCAL_STORAGE_KEY) ?? "{}"
 );
-const initialState = user ? { loggedIn: true, user } : {};
+const initialState = Object.keys(user).length > 0 
+  ? { loggedIn: true, user }
+  : {};
 
 export const authReducer = (state: UserState = initialState, action: AnyAction): UserState => {
   switch (action.type) {

@@ -41,7 +41,7 @@ const Clients: React.FC<ClientsProps> = ({
             <TableCell>Prénom</TableCell>
             <TableCell>Nom</TableCell>
             <TableCell>Ville</TableCell>
-            <TableCell>Code postal</TableCell>
+            <TableCell>CP</TableCell>
             <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
@@ -61,6 +61,12 @@ const Clients: React.FC<ClientsProps> = ({
               <TableCell>{client.city}</TableCell>
               <TableCell>{client.zipCode}</TableCell>
               <TableCell>
+                <IconButton
+                  color="primary"
+                  aria-label="Supprimer"
+                >
+                  <DeleteIcon />
+                </IconButton>
                 <IconButton
                   color="secondary"
                   aria-label="Supprimer"

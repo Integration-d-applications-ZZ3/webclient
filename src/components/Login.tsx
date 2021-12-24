@@ -6,16 +6,15 @@ import { authActions } from "../actions/authActions";
 import { GlobalState } from "../reducers";
 import { AppDispatch } from "../store";
 import { Redirect } from "react-router-dom";
+import { UserState } from "../reducers/authReducer";
 
 type LoginProps = {
   dispatch: AppDispatch;
-  loggedIn?: boolean;
-  loggingIn?: boolean;
+  auth: UserState;
 }
 const Login: React.FC<LoginProps> = ({
   dispatch,
-  loggedIn = false,
-  loggingIn = false,
+  auth,
 }) => {
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
@@ -26,7 +25,7 @@ const Login: React.FC<LoginProps> = ({
     authActions.login(email.toString(), password.toString())(dispatch);
   };
 
-  if (loggedIn) {
+  if (auth.loggedIn) {
     return <Redirect to="/" />;
   }
 
@@ -99,7 +98,7 @@ const Login: React.FC<LoginProps> = ({
             >
               Se connecter
             </Button>
-            {loggingIn
+            {auth.loggingIn
               ? (
                 <Box sx={{ width: "100%", my: 3 }}>
                   <LinearProgress />
@@ -115,8 +114,8 @@ const Login: React.FC<LoginProps> = ({
 };
 
 const mapStateToProps = (state: GlobalState) => {
-  const { loggingIn, loggedIn } = state.auth;
-  return { loggingIn, loggedIn };
+  const { auth } = state;
+  return { auth };
 };
 
 export default connect(mapStateToProps)(Login);

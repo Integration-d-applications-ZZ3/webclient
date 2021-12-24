@@ -26,7 +26,7 @@ const login = (email: string, password: string): (dispatch: AppDispatch) => void
       }, (error: (string | Error)) => {
         const message = error instanceof Error ? error.message : error;
         dispatch(failure(message));
-        dispatch(alertActions.error(message));
+        dispatch(alertActions.error(`Impossible de se connecter : ${message}`));
       });
   };
 };

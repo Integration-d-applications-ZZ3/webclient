@@ -27,13 +27,12 @@ const login = (email: string, password: string): Promise<User> => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ email, password }),
-  })
-    .then(checkResponse)
+  }).then(checkResponse)
     .then(data => {
       const user = data as User;
       localStorage.setItem(
         constants.USER_LOCAL_STORAGE_KEY,
-        JSON.stringify(user)
+        JSON.stringify({ email, ...user })
       );
       return user;
     });
