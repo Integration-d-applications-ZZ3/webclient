@@ -2,7 +2,7 @@ import constants from "../constants";
 import { authService } from "./authService";
 
 export interface Item {
-  id: number;
+  ean: number;
   name: string;
   price: number;
   description: string;
