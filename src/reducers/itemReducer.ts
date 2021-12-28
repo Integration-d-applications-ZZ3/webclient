@@ -1,5 +1,18 @@
 import { AnyAction } from "redux";
-import { ITEMS_GETALL_REQUEST, ITEMS_GETALL_FAILURE, ITEMS_GETALL_SUCCESS, ITEMS_DELETE_SUCCESS, ITEMS_DELETE_REQUEST, ITEMS_DELETE_FAILURE, ITEMS_ADD_REQUEST, ITEMS_ADD_SUCCESS, ITEMS_ADD_FAILURE } from "../actions/types";
+import {
+  ITEMS_GETALL_REQUEST,
+  ITEMS_GETALL_FAILURE,
+  ITEMS_GETALL_SUCCESS,
+  ITEMS_DELETE_SUCCESS,
+  ITEMS_DELETE_REQUEST,
+  ITEMS_DELETE_FAILURE,
+  ITEMS_ADD_REQUEST,
+  ITEMS_ADD_SUCCESS,
+  ITEMS_ADD_FAILURE,
+  ITEM_GET_REQUEST,
+  ITEM_GET_SUCCESS,
+  ITEM_GET_FAILURE
+} from "../actions/types";
 import { Item } from "../services/itemService";
 
 export interface ItemState {
@@ -32,6 +45,12 @@ export const itemReducer = (state: ItemState = defaultItemState, action: AnyActi
   case ITEMS_ADD_SUCCESS:
     return { loading: false, items: [...state.items, action.item] };
   case ITEMS_ADD_FAILURE:
+    return { loading: false, items: state.items, error: action.error };
+  case ITEM_GET_REQUEST:
+    return { loading: true, items: state.items };
+  case ITEM_GET_SUCCESS:
+    return { loading: false, items: [action.item] };
+  case ITEM_GET_FAILURE:
     return { loading: false, items: state.items, error: action.error };
   default:
     return state;

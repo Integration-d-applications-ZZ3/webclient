@@ -22,6 +22,18 @@ const getItems = async (): Promise<Item[]> => {
   return items as Item[];
 };
 
+const getItem = async (itemId: number): Promise<Item> => {
+  const item = await fetch(`${constants.API_BASE_URL}/items/${itemId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      ...authService.authHeader(),
+    },
+  }).then(authService.checkResponse);
+
+  return item as Item;
+};
+
 const insertItem = (item: Item): Promise<Item> => {
   return fetch(`${constants.API_BASE_URL}/login`, {
     method: "POST",
@@ -51,6 +63,7 @@ const deleteItem = (itemId: number): Promise<string> => {
 
 export const itemService = {
   getItems,
+  getItem,
   insertItem,
   deleteItem,
 };

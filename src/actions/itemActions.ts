@@ -2,7 +2,20 @@ import { itemService } from "../services/itemService";
 import { Item } from "../services/itemService";
 import { AppDispatch } from "../store";
 import { alertActions } from "./alertActions";
-import { ITEMS_ADD_FAILURE, ITEMS_ADD_REQUEST, ITEMS_ADD_SUCCESS, ITEMS_DELETE_FAILURE, ITEMS_DELETE_REQUEST, ITEMS_DELETE_SUCCESS, ITEMS_GETALL_FAILURE, ITEMS_GETALL_REQUEST, ITEMS_GETALL_SUCCESS } from "./types";
+import {
+  ITEMS_ADD_FAILURE,
+  ITEMS_ADD_REQUEST,
+  ITEMS_ADD_SUCCESS,
+  ITEMS_DELETE_FAILURE,
+  ITEMS_DELETE_REQUEST,
+  ITEMS_DELETE_SUCCESS,
+  ITEMS_GETALL_FAILURE,
+  ITEMS_GETALL_REQUEST,
+  ITEMS_GETALL_SUCCESS,
+  ITEM_GET_FAILURE,
+  ITEM_GET_REQUEST,
+  ITEM_GET_SUCCESS
+} from "./types";
 
 const getAll = (): (dispatch: AppDispatch) => void => {
 
@@ -22,6 +35,24 @@ const getAll = (): (dispatch: AppDispatch) => void => {
   };
 };
 
+const getItem = (itemId: number): (dispatch: AppDispatch) => void => {
+
+  const request = () => ({ type: ITEM_GET_REQUEST });
+  const success = (item: Item) => ({ type: ITEM_GET_SUCCESS, item });
+  const failure = (error: string) => ({ type: ITEM_GET_FAILURE, error });
+
+  return (dispatch: AppDispatch) => {
+    dispatch(request());
+    itemService
+      .getItem(itemId)
+      .then((item: Item) => {
+        dispatch(success(item));
+      }, (error: string) => {
+        dispatch(failure(error));
+      });
+  };
+};
+  
 const addItem = (item: Item): (dispatch: AppDispatch) => void => {
 
   const request = () => ({ type: ITEMS_ADD_REQUEST });
@@ -63,6 +94,7 @@ const deleteItem = (itemId: number): (dispatch: AppDispatch) => void => {
 
 export const itemActions = {
   getAll,
+  getItem,
   addItem,
   deleteItem,
 };

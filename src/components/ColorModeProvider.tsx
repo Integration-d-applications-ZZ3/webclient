@@ -1,7 +1,11 @@
 import { createTheme, ThemeProvider, useMediaQuery } from "@mui/material";
 import React, { useEffect, useMemo, useState } from "react";
 import constants from "../constants";
-import { ColorMode, ColorModeContext, ColorModes } from "../contexts/colorModeContext";
+import {
+  ColorMode,
+  ColorModeContext,
+  ColorModes
+} from "../contexts/colorModeContext";
 import { theme as themeJson } from "../themes";
 
 const ColorModeProvider: React.FC = ({ children }) => {

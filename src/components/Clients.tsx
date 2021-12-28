@@ -1,5 +1,14 @@
 import React, { useEffect } from "react";
-import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import {
+  IconButton,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CircularProgress from "@mui/material/CircularProgress";
 import { connect } from "react-redux";
@@ -7,6 +16,7 @@ import { clientActions } from "../actions/clientActions";
 import { GlobalState } from "../reducers";
 import { ClientState } from "../reducers/clientReducer";
 import { AppDispatch } from "../store";
+import CreateIcon from "@mui/icons-material/Create";
 
 type ClientsProps = {
   dispatch: AppDispatch;
@@ -27,6 +37,15 @@ const Clients: React.FC<ClientsProps> = ({
     );
   }
 
+  if (clients.clients && clients.clients.length === 0) {
+    return <div>Aucun client</div>;
+  }
+
+  // TODO le mettre dans les alertes
+  if (clients.error) { 
+    return <div>{clients.error}</div>;
+  }
+
   return (
     <TableContainer component={Paper}>
       <Table
@@ -37,12 +56,12 @@ const Clients: React.FC<ClientsProps> = ({
       >
         <TableHead>
           <TableRow>
-            <TableCell>ID.</TableCell>
-            <TableCell>Prénom</TableCell>
-            <TableCell>Nom</TableCell>
-            <TableCell>Ville</TableCell>
-            <TableCell>CP</TableCell>
-            <TableCell>Actions</TableCell>
+            <TableCell align="center">ID.</TableCell>
+            <TableCell align="center">Prénom</TableCell>
+            <TableCell align="center">Nom</TableCell>
+            <TableCell align="center">Ville</TableCell>
+            <TableCell align="center">CP</TableCell>
+            <TableCell align="center">Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -55,17 +74,17 @@ const Clients: React.FC<ClientsProps> = ({
                 }
               }}
             >
-              <TableCell>{client.id}</TableCell>
-              <TableCell>{client.firstName}</TableCell>
-              <TableCell>{client.lastName}</TableCell>
-              <TableCell>{client.city}</TableCell>
-              <TableCell>{client.zipCode}</TableCell>
-              <TableCell>
+              <TableCell align="center">{client.id}</TableCell>
+              <TableCell align="center">{client.firstName}</TableCell>
+              <TableCell align="center">{client.lastName}</TableCell>
+              <TableCell align="center">{client.city}</TableCell>
+              <TableCell align="center">{client.zipCode}</TableCell>
+              <TableCell align="center">
                 <IconButton
                   color="primary"
-                  aria-label="Supprimer"
+                  aria-label="Modifier"
                 >
-                  <DeleteIcon />
+                  <CreateIcon />
                 </IconButton>
                 <IconButton
                   color="secondary"

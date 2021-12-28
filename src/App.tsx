@@ -20,6 +20,8 @@ import { AlertState } from "./reducers/alertReducer";
 import { AppDispatch } from "./store";
 import Landing from "./components/Landing";
 import Clients from "./components/Clients";
+import Items from "./components/Items";
+import ItemPage from "./components/ItemPage";
 // TODO: utiliser les nested routes pour mieux gérer le layout
 
 type AppProps = {
@@ -80,6 +82,16 @@ const App: React.FC<AppProps> = ({ dispatch, alert }) => {
             <PrivateRoute
               component={Clients}
               path="/clients"
+              exact
+            />
+            <PrivateRoute
+              component={Items}
+              path="/items"
+              exact
+            />
+            <PrivateRoute
+              component={ItemPage}
+              path="/items/:id"
               exact
             />
             <Route render={() => <div>404</div>} /> 

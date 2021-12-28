@@ -1,5 +1,9 @@
 import { AnyAction } from "redux";
-import { CLIENTS_GETALL_FAILURE, CLIENTS_GETALL_REQUEST, CLIENTS_GETALL_SUCCESS } from "../actions/types";
+import {
+  CLIENTS_GETALL_FAILURE,
+  CLIENTS_GETALL_REQUEST,
+  CLIENTS_GETALL_SUCCESS
+} from "../actions/types";
 import { Client } from "../services/clientService";
 
 export interface ClientState {

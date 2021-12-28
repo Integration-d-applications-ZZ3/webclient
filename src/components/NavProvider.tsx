@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { styled, Theme, CSSObject } from "@mui/material/styles";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
@@ -14,6 +14,7 @@ import {
   IconButton
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import CategoryIcon from "@mui/icons-material/Category";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -130,12 +131,8 @@ const LoggedOutList = () => {
   );
 };
 
-type LoggedInListProps = {
-  dispatch: AppDispatch;
-}
-const LoggedInList: React.FC<LoggedInListProps> = ({
-  dispatch,
-}) => {
+const LoggedInList: React.FC = () => {
+  const dispatch = useDispatch();
   
   const handleLogout = () => {
     dispatch(authActions.logout());
@@ -174,6 +171,16 @@ const LoggedInList: React.FC<LoggedInListProps> = ({
         </ListItemIcon>
         <ListItemText primary="Clients" />
       </ListItem>
+      <ListItem 
+        component={Link} 
+        to="/items"
+        button 
+      >
+        <ListItemIcon>
+          <CategoryIcon />
+        </ListItemIcon>
+        <ListItemText primary="Objets" />
+      </ListItem>
       <ListItem
         onClick={handleLogout}
         button 
@@ -186,8 +193,6 @@ const LoggedInList: React.FC<LoggedInListProps> = ({
     </List>
   );
 };
-
-const ConnectedLoggedInList = connect()(LoggedInList);
 
 type NavProviderProps = {
   dispatch: AppDispatch;
@@ -254,7 +259,7 @@ const NavProvider: React.FC<NavProviderProps> = ({
         </DrawerHeader>
         <Divider />
         {localStorage.getItem(constants.USER_LOCAL_STORAGE_KEY)
-          ? <ConnectedLoggedInList />
+          ? <LoggedInList />
           : <LoggedOutList />
         }
         <Divider />
