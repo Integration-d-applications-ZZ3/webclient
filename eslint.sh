@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# Run linter on all TypeScript files
-yarn run eslint $(find src/ -type f -regex ".*\.ts.*")
+# Run linter on all JavaScript or TypeScript files
+yarn run eslint src/ --ext .js,.jsx,.ts,.tsx
