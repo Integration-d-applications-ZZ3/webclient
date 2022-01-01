@@ -22,6 +22,8 @@ import Landing from "./components/Landing";
 import Clients from "./components/Clients";
 import Items from "./components/Items";
 import ItemPage from "./components/ItemPage";
+import "react-perfect-scrollbar/dist/css/styles.css";
+
 // TODO: utiliser les nested routes pour mieux gérer le layout
 
 type AppProps = {

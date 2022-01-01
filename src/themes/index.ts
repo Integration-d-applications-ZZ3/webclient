@@ -1,5 +1,7 @@
 import { ThemeOptions } from "@mui/material";
 
+// TODO : modifier la couleur du background
+// (pas totalement noir/blanc)
 export const theme: ThemeOptions = {
   breakpoints: {
     values: {

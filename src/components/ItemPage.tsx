@@ -25,7 +25,7 @@ const ItemPage: React.FC<ItemPageProps> = ({
     itemActions.getItem(itemId)(dispatch);
   }, []);
 
-  const item = items.items.find(i => i.id === itemId);
+  const item = items.items.find(i => i.ean === itemId);
 
   
   if (items.loading) {
@@ -41,7 +41,7 @@ const ItemPage: React.FC<ItemPageProps> = ({
   return (
     <div>
       wip!
-      {item.id}
+      {item.ean}
       {item.name}
       {item.description}
       {item.price} €

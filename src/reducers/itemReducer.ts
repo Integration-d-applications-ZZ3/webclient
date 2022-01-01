@@ -37,7 +37,7 @@ export const itemReducer = (state: ItemState = defaultItemState, action: AnyActi
   case ITEMS_DELETE_REQUEST:
     return { loading: true, items: state.items };
   case ITEMS_DELETE_SUCCESS:
-    return { loading: false, items: state.items.filter(item => item.id !== action.itemId) };
+    return { loading: false, items: state.items.filter(item => item.ean !== action.itemId) };
   case ITEMS_DELETE_FAILURE:
     return { loading: false, items: state.items, error: action.error };
   case ITEMS_ADD_REQUEST:
