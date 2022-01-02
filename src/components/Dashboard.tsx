@@ -12,11 +12,7 @@ interface DashboardProps {
   clients: ClientState;
   user?: User 
 }
-const Dashboard: React.FC<DashboardProps> = (
-  // dispatch,
-  // clients,
-  // user,
-) => {
+const Dashboard: React.FC<DashboardProps> = () => {
   return (
     <div
       style={{
