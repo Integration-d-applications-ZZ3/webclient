@@ -5,7 +5,7 @@ import {
 import { 
   Route,
   Switch,
-  HashRouter,
+  Router,
 } from "react-router-dom";
 import NavProvider from "./components/NavProvider";
 import ColorModeProvider from "./components/ColorModeProvider";
@@ -48,7 +48,7 @@ const App: React.FC<AppProps> = ({ dispatch, alert }) => {
 
   return (
     <ColorModeProvider>
-      <HashRouter>
+      <Router history={history}>
         <NavProvider>
           <Snackbar
             open={snackbarOpen}
@@ -99,7 +99,7 @@ const App: React.FC<AppProps> = ({ dispatch, alert }) => {
             <Route render={() => <div>404</div>} /> 
           </Switch>
         </NavProvider>
-      </HashRouter>
+      </Router>
     </ColorModeProvider>
   );
 };
