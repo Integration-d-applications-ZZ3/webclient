@@ -1,7 +1,6 @@
 import { Box, Container, Grid } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { clientActions } from "../actions/clientActions";
 import { GlobalState } from "../reducers";
 import { ClientState } from "../reducers/clientReducer";
 import { User } from "../services/authService";
@@ -13,12 +12,11 @@ interface DashboardProps {
   clients: ClientState;
   user?: User 
 }
-const Dashboard: React.FC<DashboardProps> = ({
-  dispatch,
-  clients,
-  user,
-}) => {
-
+const Dashboard: React.FC<DashboardProps> = (
+  // dispatch,
+  // clients,
+  // user,
+) => {
   return (
     <div
       style={{

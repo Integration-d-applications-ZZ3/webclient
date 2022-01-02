@@ -26,12 +26,9 @@ const ItemPage: React.FC<ItemPageProps> = ({
   }, []);
 
   const item = items.items.find(i => i.ean === itemId);
-
   
   if (items.loading) {
-    return (
-      <CircularProgress />
-    );
+    return <CircularProgress />;
   }
     
   if (!item) {
