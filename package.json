@@ -2,6 +2,7 @@
   "name": "webclient",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://integration-d-applications-zz3.github.io/webclient",
   "dependencies": {
     "@emotion/cache": "^11.5.0",
     "@emotion/react": "^11.5.0",
