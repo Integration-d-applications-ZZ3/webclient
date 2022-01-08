@@ -122,7 +122,7 @@ const ItemTable: React.FC<ItemProps> = ({
                 >
                   <TableRow hover>
                     <TableCell>
-                      {item.ean}
+                      {item.ean.toString().padStart(13, "0")}
                     </TableCell>
                     <TableCell>
                       <Avatar

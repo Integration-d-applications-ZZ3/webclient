@@ -19,7 +19,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
         display: "flex",
         flex: "1 1 auto",
         maxWidth: "100%",
-        paddingTop: "1.5rem",
+        // paddingTop: "1.5rem",
       }}
     >
       <Box
