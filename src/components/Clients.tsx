@@ -9,7 +9,8 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow
+  TableRow,
+  Typography
 } from "@mui/material";
 import {
   Delete as DeleteIcon,
@@ -133,7 +134,11 @@ const Clients: React.FC<ClientsProps> = ({
                   }
                 }}
               >
-                <TableCell align="center">{client.id}</TableCell>
+                <TableCell align="center">
+                  <Typography variant="h6">
+                    {client.id}
+                  </Typography>
+                </TableCell>
                 <TableCell align="center">{client.firstName}</TableCell>
                 <TableCell align="center">{client.lastName}</TableCell>
                 <TableCell align="center">{client.city}</TableCell>

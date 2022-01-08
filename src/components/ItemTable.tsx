@@ -144,7 +144,7 @@ const ItemTable: React.FC<ItemProps> = ({
                       {item.supplierId}
                     </TableCell>
                     <TableCell>
-                      <ItemQuantityChip quantity={0} />
+                      <ItemQuantityChip quantity={item.stock} />
                       {/* TODO : régler la vraie quantité */}
                     </TableCell>
                   </TableRow>

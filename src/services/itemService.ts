@@ -8,6 +8,7 @@ export interface Item {
   description: string;
   photo: string;
   supplierId: number;
+  stock: number;
 }
 
 const getItems = async (): Promise<Item[]> => {
