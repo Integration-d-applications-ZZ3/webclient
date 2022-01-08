@@ -66,7 +66,7 @@ const remove = (id: number): (dispatch: AppDispatch) => void => {
       .deleteClient(id)
       .then(() => {
         dispatch(success(id));
-        getAll()(dispatch);
+        // getAll()(dispatch);
         dispatch(alertActions.success("Client supprimé"));
       }, (error: string) => {
         dispatch(alertActions.error(`Impossible de supprimer le client : ${error}`));
@@ -87,7 +87,6 @@ const update = (client: Client): (dispatch: AppDispatch) => void => {
       .updateClient(client)
       .then((client: Client) => {
         dispatch(success(client));
-        getAll()(dispatch);
         dispatch(alertActions.success("Client modifié"));
       }, (error: string) => {
         dispatch(alertActions.error(`Impossible de mettre à jour le client : ${error}`));

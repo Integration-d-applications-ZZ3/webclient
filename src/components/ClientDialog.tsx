@@ -112,7 +112,8 @@ const ClientDialog: React.FC<ClientDialogProps> = ({
               fullWidth
               value={zipCode}
               onChange={(e) => 
-                setZipCode(!isNaN(parseInt(e.target.value))
+                setZipCode(!isNaN(parseInt(e.target.value)) 
+                  && parseInt(e.target.value) > 0
                   ? parseInt(e.target.value) 
                   : 0)
               }

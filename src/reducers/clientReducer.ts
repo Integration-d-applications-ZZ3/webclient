@@ -47,7 +47,7 @@ export const clientReducer = (state: ClientState = defaultState, action: AnyActi
   case CLIENTS_DELETE_REQUEST:
     return { loading: true, clients: state.clients };
   case CLIENTS_DELETE_SUCCESS:
-    return { loading: false, clients: state.clients.filter(client => client.id !== action.clientId) };
+    return { loading: false, clients: state.clients.filter(client => client.id !== action.id) };
   case CLIENTS_DELETE_FAILURE:
     return { loading: false, clients: state.clients };
   default:
