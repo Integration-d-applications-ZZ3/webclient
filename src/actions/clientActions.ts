@@ -79,13 +79,13 @@ const update = (client: Client): (dispatch: AppDispatch) => void => {
 
   const request = () => ({ type: CLIENTS_UPDATE_REQUEST });
   const failure = (error: string) => ({ type: CLIENTS_UPDATE_FAILURE, error });
-  const success = (client: Client) => ({ type: CLIENTS_UPDATE_SUCCESS, client });
+  const success = (newClient: Client) => ({ type: CLIENTS_UPDATE_SUCCESS, client: newClient });
 
   return (dispatch: AppDispatch) => {
     dispatch(request());
     clientService
       .updateClient(client)
-      .then((client: Client) => {
+      .then(() => {
         dispatch(success(client));
         dispatch(alertActions.success("Client modifié"));
       }, (error: string) => {
