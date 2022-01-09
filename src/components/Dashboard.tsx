@@ -34,6 +34,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
           sx={{
             flexGrow: 1,
           }}
+          ml={-3}
         >
           <Container maxWidth={false}>
             <Grid

@@ -40,19 +40,16 @@ const ItemQuantityChip: React.FC<ItemQuantityChipProps> = ({ quantity }) => {
   );
 };
 
-// TODO : description en tooltip de la ligne
-
 interface ItemProps {
   dispatch: AppDispatch;
   items: ItemState;
+  fullHeight?: boolean
 }
 const ItemTable: React.FC<ItemProps> = ({
   dispatch,
   items,
+  fullHeight = false,
 }) => {
-
-  // TODO : mettre un lien vers la page du produit ?
-
   const [orderingByPrice, setOrderingByPrice] = useState(false);
   const itemList = items.items;
 
@@ -83,7 +80,7 @@ const ItemTable: React.FC<ItemProps> = ({
       <CardHeader title="Produits disponibles" />
       <PerfectScrollbar>
         <Box sx={{
-          maxHeight: 350, // TODO : ajuster la hauteur
+          ...(fullHeight ? {} : {maxHeight: 250}),
           maxWidth: "100%",
         }}>
           <Table size="small">
@@ -109,7 +106,7 @@ const ItemTable: React.FC<ItemProps> = ({
                 <TableCell>
                   Fournisseur
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
                   Quantité
                 </TableCell>
               </TableRow>
@@ -143,7 +140,7 @@ const ItemTable: React.FC<ItemProps> = ({
                     <TableCell>
                       {item.supplierId}
                     </TableCell>
-                    <TableCell>
+                    <TableCell align="center">
                       <ItemQuantityChip quantity={item.stock} />
                       {/* TODO : régler la vraie quantité */}
                     </TableCell>
