@@ -3,7 +3,7 @@ import { authService } from "./authService";
 import { Item } from "./itemService";
 
 export interface Order {
-  orderId: number;
+  id: number;
   clientId: number;
   items: Item[];
   date: Date;

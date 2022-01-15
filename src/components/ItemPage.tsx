@@ -13,6 +13,7 @@ import { ItemState } from "../reducers/itemReducer";
 import { AppDispatch } from "../store";
 import ItemCard from "./ItemCard";
 import BarcodeCard from "./BarcodeCard";
+import ItemOrderHistoryTable from "./ItemOrderHistoryTable";
 
 interface ItemPageParams {
   id: string;
@@ -79,6 +80,16 @@ const ItemPage: React.FC<ItemPageProps> = ({
           item
         >
           <BarcodeCard item={item} />
+        </Grid>
+        <Grid
+          xs={12}
+          sm={12}
+          md={12}
+          lg={6}
+          xl={6}
+          item
+        >
+          <ItemOrderHistoryTable item={item} />
         </Grid>
       </Grid>
     </Box>

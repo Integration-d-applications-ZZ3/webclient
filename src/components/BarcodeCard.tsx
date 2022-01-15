@@ -21,7 +21,7 @@ const BarcodeCard: React.FC<BarcodeCardProps> = ({
   item,
 }) => {
 
-  const eanCode = item.ean.toString().padStart(13);
+  const eanCode = item.ean.toString().padStart(13, "0");
   const barcodeUrl = `https://barcode.tec-it.com/barcode.ashx?data=${eanCode}&code=EAN13`;
 
   const handlePrint = () => {

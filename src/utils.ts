@@ -22,3 +22,8 @@ export const lastNmonths = (n: number): string[] => {
   }
   return months;
 };
+
+export const formatDate = (date: Date): string => {
+  return [date.getMonth() + 1, date.getDate(), date.getFullYear()].join("/") 
+  + " " + [date.getHours(), date.getMinutes(), date.getSeconds()].join(":");
+};
