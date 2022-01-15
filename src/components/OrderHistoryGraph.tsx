@@ -75,14 +75,16 @@ const OrderHistoryGraph: React.FC<OrderHistoryGraphProps> = ({
         action={
           <>
             <IconButton
+              color="secondary"
               onClick={() => setMonthsCount(monthsCount - 1)}
               disabled={monthsCount < 3}
             >
               <RemoveIcon />
             </IconButton>
             <IconButton
+              color="primary"
               onClick={() => setMonthsCount(monthsCount + 1)}
-              disabled={monthsCount > 10}
+              disabled={monthsCount > 11}
             >
               <AddIcon />
             </IconButton>

@@ -49,14 +49,6 @@ const ItemPage: React.FC<ItemPageProps> = ({
         flexGrow: 1,
       }}
     >
-      <Typography
-        sx={{
-          mb: 3
-        }}
-        variant="h4"
-      >
-        Page produit
-      </Typography>
       <Grid
         spacing={2}
         container
