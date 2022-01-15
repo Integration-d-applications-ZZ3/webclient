@@ -25,11 +25,13 @@ const ColorModeProvider: React.FC = ({ children }) => {
         console.debug("Set color mode from local storage");
         setMode(storedMode);
       }
-    } catch (error) {
-      console.error(`Could not retrieve color mode from local storage: 
-                    ${(error as Error).message}`);
-    }
+    } catch (error) { /* Empty */ }
   }, []);
+
+  // Astuce dégueulasse pour bypass MUI
+  useEffect(() => {
+    document.body.style.backgroundColor = mode == "light" ? "#F6F9FA" : "";
+  }, [mode]);
   
   const theme = useMemo(() => {
     return createTheme(

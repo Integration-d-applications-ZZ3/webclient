@@ -13,7 +13,6 @@ import {
   TableBody,
   TableSortLabel,
   Tooltip,
-
 } from "@mui/material";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { itemActions } from "../actions/itemActions";
@@ -21,6 +20,7 @@ import { AppDispatch } from "../store";
 import { ItemState } from "../reducers/itemReducer";
 import { GlobalState } from "../reducers";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 interface ItemQuantityChipProps {
   quantity: number;
@@ -80,7 +80,7 @@ const ItemTable: React.FC<ItemProps> = ({
       <CardHeader title="Produits disponibles" />
       <PerfectScrollbar>
         <Box sx={{
-          ...(fullHeight ? {} : {maxHeight: 250}),
+          ...(fullHeight ? {} : {maxHeight: 300}),
           maxWidth: "100%",
         }}>
           <Table size="small">
@@ -117,7 +117,12 @@ const ItemTable: React.FC<ItemProps> = ({
                   key={item.ean}
                   title={item.description}
                 >
-                  <TableRow hover>
+                  <TableRow
+                    component={Link}
+                    to={`/items/${item.ean}`}
+                    style={{ textDecoration: "none" }}
+                    hover
+                  >
                     <TableCell>
                       {item.ean.toString().padStart(13, "0")}
                     </TableCell>
