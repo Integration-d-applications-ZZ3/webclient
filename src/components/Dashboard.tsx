@@ -6,13 +6,9 @@ import { ClientState } from "../reducers/clientReducer";
 import { User } from "../services/authService";
 import { AppDispatch } from "../store";
 import ItemTable from "./ItemTable";
+import OrderHistoryGraph from "./OrderHistoryGraph";
 
-interface DashboardProps {
-  dispatch: AppDispatch;
-  clients: ClientState;
-  user?: User 
-}
-const Dashboard: React.FC<DashboardProps> = () => {
+const Dashboard: React.FC = () => {
   return (
     <div
       style={{
@@ -51,6 +47,15 @@ const Dashboard: React.FC<DashboardProps> = () => {
               >
                 <ItemTable />
               </Grid>
+              <Grid
+                lg={6}
+                md={6}
+                xl={3}
+                xs={12}
+                item
+              >
+                <OrderHistoryGraph />
+              </Grid>
             </Grid>
           </Container>
         </Box>
@@ -59,13 +64,4 @@ const Dashboard: React.FC<DashboardProps> = () => {
   );
 };
 
-const mapStateToProps = (state: GlobalState) => {
-  const { clients, auth } = state;
-  const { user } = auth;
-  return {
-    clients,
-    user,
-  };
-};
-
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard;

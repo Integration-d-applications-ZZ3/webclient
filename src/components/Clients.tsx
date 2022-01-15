@@ -134,13 +134,13 @@ const Clients: React.FC<ClientsProps> = ({
                   }
                 }}
               >
+                <TableCell align="center">{client.id}</TableCell>
                 <TableCell align="center">
-                  <Typography variant="h6">
-                    {client.id}
-                  </Typography>
+                  <Typography variant="body1">{client.firstName}</Typography>
                 </TableCell>
-                <TableCell align="center">{client.firstName}</TableCell>
-                <TableCell align="center">{client.lastName}</TableCell>
+                <TableCell align="center">
+                  <Typography variant="body1">{client.lastName}</Typography>
+                </TableCell>
                 <TableCell align="center">{client.city}</TableCell>
                 <TableCell align="center">{client.zipCode}</TableCell>
                 <TableCell align="center">
