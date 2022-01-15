@@ -2,7 +2,7 @@
 
 ## Commandes
 
-### `yarn install`
+### `yarn`
 Installation des dépendances
 ### `yarn start`
 Démarre le serveur de développement

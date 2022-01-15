@@ -1,4 +1,10 @@
-import { CircularProgress } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Container,
+  Grid,
+  Typography
+} from "@mui/material";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -6,6 +12,8 @@ import { itemActions } from "../actions/itemActions";
 import { GlobalState } from "../reducers";
 import { ItemState } from "../reducers/itemReducer";
 import { AppDispatch } from "../store";
+import ItemCard from "./ItemCard";
+import BarcodeCard from "./BarcodeCard";
 
 interface ItemPageParams {
   id: string;
@@ -36,14 +44,39 @@ const ItemPage: React.FC<ItemPageProps> = ({
   }
 
   return (
-    <div>
-      wip!
-      {item.ean}
-      {item.name}
-      {item.description}
-      {item.price} €
-      <img src={item.photo} alt={item.name} />
-    </div>
+    <Box
+      sx={{
+        flexGrow: 1,
+        minHeight: 450
+      }}
+    >
+      <Container style={{ margin: 0 }}>
+        <Typography
+          sx={{
+            mb: 3 }}
+          variant="h4"
+        >
+          Page produit
+        </Typography>
+        <Grid
+          spacing={2}
+          container
+        >
+          <Grid
+            xs={6}
+            item
+          >
+            <ItemCard item={item} />
+          </Grid>
+          <Grid
+            xs={6}
+            item
+          >
+            <BarcodeCard item={item} />
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 
