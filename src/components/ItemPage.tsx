@@ -2,7 +2,6 @@ import {
   Box,
   CircularProgress,
   Grid,
-  Typography
 } from "@mui/material";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
