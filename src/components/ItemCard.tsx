@@ -38,14 +38,26 @@ const ItemCard: React.FC<ItemCardProps> = ({
           />
         </Box>
         <Divider />
-        <Typography
-          variant="h5"
+        <Grid
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
           sx={{
-            my: 2
+            my: 1
           }}
+          container
         >
-          {item.name}
-        </Typography>
+          <Grid item>
+            <Typography
+              variant="h5"
+            >
+              {item.name}
+            </Typography>
+          </Grid>
+          <Grid item>
+            Prix :<Typography variant="h4">{item.price} €</Typography>
+          </Grid>
+        </Grid>
         <Typography
           variant="subtitle1"
         >
@@ -57,13 +69,10 @@ const ItemCard: React.FC<ItemCardProps> = ({
           alignItems="flex-end"
           sx={{
             mt: 3,
-            mb: -2
+            mb: -4
           }}
           container
         >
-          <Grid item>
-            Prix :<Typography variant="h4">{item.price} €</Typography>
-          </Grid>
         </Grid>
       </CardContent>
     </Card>

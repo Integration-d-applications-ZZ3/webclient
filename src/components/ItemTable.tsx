@@ -81,7 +81,6 @@ const ItemTable: React.FC<ItemProps> = ({
       <PerfectScrollbar>
         <Box sx={{
           ...(fullHeight ? {} : {maxHeight: 300}),
-          maxWidth: "100%",
         }}>
           <Table size="small">
             <TableHead>
