@@ -1,10 +1,5 @@
 import { Box, Container, Grid } from "@mui/material";
 import React from "react";
-import { connect } from "react-redux";
-import { GlobalState } from "../reducers";
-import { ClientState } from "../reducers/clientReducer";
-import { User } from "../services/authService";
-import { AppDispatch } from "../store";
 import ItemTable from "./ItemTable";
 import OrderHistoryGraph from "./OrderHistoryGraph";
 
