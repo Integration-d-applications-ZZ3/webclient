@@ -1,7 +1,6 @@
 import {
   Box,
   CircularProgress,
-  Container,
   Grid,
   Typography
 } from "@mui/material";
@@ -47,35 +46,41 @@ const ItemPage: React.FC<ItemPageProps> = ({
     <Box
       sx={{
         flexGrow: 1,
-        minHeight: 450
       }}
     >
-      <Container style={{ margin: 0 }}>
-        <Typography
-          sx={{
-            mb: 3 }}
-          variant="h4"
-        >
-          Page produit
-        </Typography>
+      <Typography
+        sx={{
+          mb: 3
+        }}
+        variant="h4"
+      >
+        Page produit
+      </Typography>
+      <Grid
+        spacing={2}
+        container
+      >
         <Grid
-          spacing={2}
-          container
+          xs={12}
+          sm={12}
+          md={12}
+          lg={6}
+          xl={6}
+          item
         >
-          <Grid
-            xs={6}
-            item
-          >
-            <ItemCard item={item} />
-          </Grid>
-          <Grid
-            xs={6}
-            item
-          >
-            <BarcodeCard item={item} />
-          </Grid>
+          <ItemCard item={item} />
         </Grid>
-      </Container>
+        <Grid
+          xs={12}
+          sm={12}
+          md={12}
+          lg={6}
+          xl={6}
+          item
+        >
+          <BarcodeCard item={item} />
+        </Grid>
+      </Grid>
     </Box>
   );
 };

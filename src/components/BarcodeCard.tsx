@@ -37,7 +37,7 @@ const BarcodeCard: React.FC<BarcodeCardProps> = ({
         <body>
           <img
             src="${barcodeUrl}"
-            style="width: 1145px; height: 500px;" />
+            style="width: 904px; height: 400px;" />
         </body>
       </html>
     `);
