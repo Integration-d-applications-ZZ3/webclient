@@ -44,9 +44,9 @@ const ItemOrderHistoryTable: React.FC<ItemOrderHistoryTableProps> = ({
     return <CircularProgress />;
   }
 
-  const relatedOrders = orders.orders.filter(
-    order => order.items.some(i => i.ean === item.ean)
-  );
+  const relatedOrders = orders.orders
+    .filter(order => order.items.some(i => i.ean === item.ean))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <Card>
