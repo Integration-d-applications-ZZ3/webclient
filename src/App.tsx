@@ -23,6 +23,7 @@ import Clients from "./components/Clients";
 import Items from "./components/Items";
 import ItemPage from "./components/ItemPage";
 import "react-perfect-scrollbar/dist/css/styles.css";
+import SuppliesPage from "./components/SuppliesPage";
 
 // TODO: utiliser les nested routes pour mieux gérer le layout
 
@@ -94,6 +95,11 @@ const App: React.FC<AppProps> = ({ dispatch, alert }) => {
             <PrivateRoute
               component={ItemPage}
               path="/items/:id"
+              exact
+            />
+            <PrivateRoute
+              component={SuppliesPage}
+              path="/supplies"
               exact
             />
             <Route render={() => <div>404</div>} /> 

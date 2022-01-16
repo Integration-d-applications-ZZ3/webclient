@@ -26,6 +26,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import HomeIcon from "@mui/icons-material/Home";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { ColorModeContext } from "../contexts/colorModeContext";
 import { Link } from "react-router-dom";
 import { authActions } from "../actions/authActions";
@@ -180,6 +181,16 @@ const LoggedInList: React.FC = () => {
           <CategoryIcon />
         </ListItemIcon>
         <ListItemText primary="Objets" />
+      </ListItem>
+      <ListItem
+        component={Link}
+        to="/supplies"
+        button
+      >
+        <ListItemIcon>
+          <LocalShippingIcon />
+        </ListItemIcon>
+        <ListItemText primary="Fournisseurs" />
       </ListItem>
       <ListItem
         onClick={handleLogout}
