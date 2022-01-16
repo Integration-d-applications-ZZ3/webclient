@@ -37,7 +37,8 @@ const BarcodeCard: React.FC<BarcodeCardProps> = ({
         <body>
           <img
             src="${barcodeUrl}"
-            style="width: 904px; height: 400px;" />
+            style="width: 904px; height: 400px;"
+          />
         </body>
       </html>
     `);
@@ -48,7 +49,11 @@ const BarcodeCard: React.FC<BarcodeCardProps> = ({
   };
 
   return (
-    <Card>
+    <Card
+      sx={{
+        height: "100%"
+      }}
+    >
       <CardHeader
         title="Code barre (EAN-13)"
       />

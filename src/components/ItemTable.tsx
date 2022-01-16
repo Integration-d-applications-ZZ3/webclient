@@ -76,7 +76,11 @@ const ItemTable: React.FC<ItemProps> = ({
   }
 
   return (
-    <Card>
+    <Card
+      sx={{
+        height: "100%"
+      }}
+    >
       <CardHeader title="Produits disponibles" />
       <PerfectScrollbar>
         <Box sx={{
