@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Card,
   CardContent,
   Grid,
@@ -9,12 +8,7 @@ import {
   Typography
 } from "@mui/material";
 import React from "react";
-import PeopleIcon from "@mui/icons-material/People";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import CategoryIcon from "@mui/icons-material/Category";
 // import GitHubIcon from "@mui/icons-material/GitHub";
-import { Link } from "react-router-dom";
 
 const Landing: React.FC = () => {
   return (
@@ -65,29 +59,9 @@ const Landing: React.FC = () => {
               <List component="ul">
                 <ListItem component="li">
                   &bull; Des milliers de produits à portée de main
-                  <Button
-                    startIcon={<CategoryIcon />}
-                    variant="text"
-                    size="small"
-                    sx={{ ml: 1, my: 0 }}
-                    component={Link}
-                    to="/items"
-                  >
-                    Produits
-                  </Button>
                 </ListItem>
                 <ListItem component="li">
                   &bull; {"Gardez une trace de tout"}
-                  <Button
-                    startIcon={<DashboardIcon />}
-                    variant="text"
-                    size="small"
-                    sx={{ ml: 1, my: 0 }}
-                    component={Link}
-                    to="/dashboard"
-                  >
-                    Tableau de bord
-                  </Button>
                 </ListItem>
                 <ListItem component="li">
                   &bull; {"Passez vos commandes depuis l'application mobile"}
@@ -113,29 +87,9 @@ const Landing: React.FC = () => {
               <List component="ul">
                 <ListItem component="li">
                   &bull; Simple gestion des clients
-                  <Button
-                    startIcon={<PeopleIcon />}
-                    variant="text"
-                    size="small"
-                    sx={{ ml: 1, my: 0 }}
-                    component={Link}
-                    to="/clients"
-                  >
-                    Clients
-                  </Button>
                 </ListItem>
                 <ListItem component="li">
                   &bull; {"Passez commande en un clin d'œil"}
-                  <Button
-                    startIcon={<LocalShippingIcon />}
-                    variant="text"
-                    size="small"
-                    sx={{ ml: 1, my: 0 }}
-                    component={Link}
-                    to="/supplies"
-                  >
-                    Fournisseurs
-                  </Button>
                 </ListItem>
                 <ListItem component="li">
                   &bull; {"Consultez l'historique de vos commandes"}
