@@ -13,6 +13,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CategoryIcon from "@mui/icons-material/Category";
+// import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
 
 const Landing: React.FC = () => {
@@ -30,7 +31,22 @@ const Landing: React.FC = () => {
           item
           xs={12}
         >
-          <div className="jumbotron-image" />
+          <div
+            className="jumbotron-image"
+            title="Image from Pexels"
+          >
+            <Typography
+              sx={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                margin: 2
+              }}
+              variant="h4"
+            >
+              Le stock, réinventé.
+            </Typography>
+          </div>
         </Grid>
         <Grid
           item
@@ -128,6 +144,26 @@ const Landing: React.FC = () => {
             </CardContent>
           </Card>
         </Grid>
+        {/* <Grid
+          item
+          xs={12}
+        >
+          <Card>
+            <CardContent>
+              <Typography variant="body1">
+                {"Client web du projet d'intégration d'applications de..."}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                startIcon={<GitHubIcon />}
+                href=""
+              >
+                Dépôt GitHub
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid> */}
       </Grid>
     </Box>
   );
