@@ -26,7 +26,7 @@ interface ItemQuantityChipProps {
   quantity: number;
 }
 const ItemQuantityChip: React.FC<ItemQuantityChipProps> = ({ quantity }) => {
-  const label = quantity == 0 ? "Rupture ⚠️" : quantity.toString();
+  const label = quantity == 0 ? "Rupture ⚠️" : quantity?.toString();
   const color = quantity == 0 ? "secondary" : "primary";
   // TODO : ajouter une 3eme couleur si proche ?
 
@@ -78,13 +78,13 @@ const ItemTable: React.FC<ItemProps> = ({
   return (
     <Card
       sx={{
-        height: "100%"
+        minHeight: "100%"
       }}
     >
       <CardHeader title="Produits disponibles" />
       <PerfectScrollbar>
         <Box sx={{
-          ...(fullHeight ? {} : {maxHeight: 300}),
+          ...(fullHeight ? {} : {maxHeight: "24rem"}),
         }}>
           <Table size="small">
             <TableHead>

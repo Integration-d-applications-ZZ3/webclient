@@ -17,7 +17,11 @@ const ItemCard: React.FC<ItemCardProps> = ({
   item,
 }) => {
   return (
-    <Card>
+    <Card
+      sx={{
+        width: "100%"
+      }}
+    >
       <CardContent>
         <Box
           sx={{

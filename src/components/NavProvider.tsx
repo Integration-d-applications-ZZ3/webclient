@@ -247,13 +247,35 @@ const NavProvider: React.FC<NavProviderProps> = ({
             container
           >
             <Grid item>
-              <Typography variant="h6" noWrap component="div">
-                Gestion des stocks
-              </Typography>
+              <Grid container alignItems="flex-end">
+                <Grid item>
+                  <Typography
+                    variant="h3"
+                    noWrap 
+                    component="div"
+                  >
+                    Katundu
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography
+                    variant="subtitle2"
+                    mb={1}
+                    ml={2}
+                  >
+                    La gestion de stock, simplifiée
+                  </Typography>
+                </Grid>
+              </Grid>
             </Grid>
             {user?.email && user?.role
               ?
-              <Grid item>
+              <Grid
+                sx={{
+                  mt: 1.5
+                }}
+                item
+              >
                 <Typography variant="body2" component="div">
                   Connecté en tant que {user.email} ({user.role})
                 </Typography>
