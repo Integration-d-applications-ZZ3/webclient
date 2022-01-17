@@ -11,7 +11,9 @@ import {
   CssBaseline,
   Typography,
   Divider,
-  IconButton
+  IconButton,
+  Tooltip,
+  Avatar
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CategoryIcon from "@mui/icons-material/Category";
@@ -35,6 +37,7 @@ import { history } from "../browserHistory";
 import { AppDispatch } from "../store";
 import { GlobalState } from "../reducers";
 import { User } from "../services/authService";
+import { hashColor } from "../utils";
 
 const drawerWidth = 240;
 
@@ -257,7 +260,7 @@ const NavProvider: React.FC<NavProviderProps> = ({
                     Katundu
                   </Typography>
                 </Grid>
-                <Grid item>
+                {/* <Grid item>
                   <Typography
                     variant="subtitle2"
                     mb={1}
@@ -265,21 +268,23 @@ const NavProvider: React.FC<NavProviderProps> = ({
                   >
                     La gestion de stock, simplifiée
                   </Typography>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
             {user?.email && user?.role
               ?
-              <Grid
-                sx={{
-                  mt: 1.5
-                }}
-                item
+              <Tooltip
+                title={`Connecté en tant que ${user.email} (${user.role})`}
               >
-                <Typography variant="body2" component="div">
-                  Connecté en tant que {user.email} ({user.role})
-                </Typography>
-              </Grid>
+                <Avatar
+                  sx={{
+                    mt: 0.5,
+                    backgroundColor: hashColor(user.email),
+                  }}
+                >
+                  {user.email.substring(0, 2).toUpperCase()}
+                </Avatar>
+              </Tooltip>
               : null}
           </Grid>
         </Toolbar>

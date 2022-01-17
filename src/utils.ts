@@ -31,3 +31,12 @@ export const formatDate = (date: Date): string => {
     date.getMinutes().toString().padStart(2, "0"),
     date.getSeconds().toString().padStart(2, "0")].join(":");
 };
+
+export const hashCode = (str: string): number => {
+  return str.split("").reduce((prevHash: number, currVal: string) =>
+    (((prevHash << 5) - prevHash) + currVal.charCodeAt(0))|0, 0);
+};
+
+export const hashColor = (str: string): string => {
+  return `hsl(${hashCode(str) % 360}, 100%, 50%)`;
+};
