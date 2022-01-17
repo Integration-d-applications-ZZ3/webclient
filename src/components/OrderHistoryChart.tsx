@@ -33,6 +33,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
 interface OrderHistoryGraphProps {
   dispatch: AppDispatch;
   orders: OrderState;
@@ -93,10 +94,12 @@ const OrderHistoryGraph: React.FC<OrderHistoryGraphProps> = ({
       />
       <Divider />
       <CardContent>
-        <Box sx={{
-          height: "300px",
-          position: "relative",
-        }}>
+        <Box
+          sx={{
+            height: "125px",
+            position: "relative",
+          }}
+        >
           <Line
             options={{
               responsive: true,
