@@ -37,7 +37,7 @@ const OrderHistoryTable: React.FC<OrderHistoryTableProps> = ({
   return (
     <Card
       sx={{
-        height: "100%",
+        minHeight: "100%"
       }}
     >
       <CardHeader
@@ -46,7 +46,7 @@ const OrderHistoryTable: React.FC<OrderHistoryTableProps> = ({
       <PerfectScrollbar>
         <Box
           sx={{
-            maxHeight: "14rem",
+            maxHeight: "18rem",
           }}
         >
           {orderList.length > 0
