@@ -84,7 +84,7 @@ const ItemTable: React.FC<ItemProps> = ({
       <CardHeader title="Produits disponibles" />
       <PerfectScrollbar>
         <Box sx={{
-          ...(fullHeight ? {} : {maxHeight: "24rem"}),
+          ...(fullHeight ? {} : {maxHeight: "18rem"}),
         }}>
           <Table size="small">
             <TableHead>

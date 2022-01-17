@@ -7,4 +7,7 @@ export default {
 
   // Local storage key for the color mode (dark & light)
   COLOR_MODE_LOCALE_STORAGE_KEY: "stock_color_mode",
+
+  // Supplier API base url
+  SUPPLIER_API_BASE_URL: "https://backend-fournisseur.azurewebsites.net/api",
 };
