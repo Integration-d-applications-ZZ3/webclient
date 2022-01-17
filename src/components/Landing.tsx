@@ -34,11 +34,24 @@ const Landing: React.FC = () => {
                 position: "absolute",
                 bottom: 0,
                 left: 0,
-                margin: 2
+                mx: 2,
+                my: 1
               }}
               variant="h4"
             >
               Le stock, réinventé.
+            </Typography>
+            <Typography
+              sx={{
+                position: "absolute",
+                top: 0,
+                right: 0,
+                borderRightStyle: 0,
+                mx: 2,
+              }}
+              variant="h2"
+            >
+              Katundu
             </Typography>
           </div>
         </Grid>
