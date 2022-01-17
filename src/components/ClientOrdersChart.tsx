@@ -115,7 +115,7 @@ const ClientOrdersChart: React.FC<ClientOrdersChartProps> = ({
       <CardContent>
         <Box
           sx={{
-            height: "125px",
+            height: "12.5rem",
             position: "relative",
           }}
         >

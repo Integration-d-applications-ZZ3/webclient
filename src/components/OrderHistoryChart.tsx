@@ -96,7 +96,7 @@ const OrderHistoryGraph: React.FC<OrderHistoryGraphProps> = ({
       <CardContent>
         <Box
           sx={{
-            height: "125px",
+            height: "12.5rem",
             position: "relative",
           }}
         >
