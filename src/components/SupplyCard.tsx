@@ -6,7 +6,6 @@ import {
   CardActions,
   CardContent,
   Divider,
-  Grid,
   Typography
 } from "@mui/material";
 import {
@@ -14,13 +13,13 @@ import {
   Info as InfoIcon,
 } from "@mui/icons-material";
 import React from "react";
-import { Item } from "../services/itemService";
+import { Product } from "../services/supplierService";
 
 interface SupplyCardProps {
-  item: Item;
+  product: Product;
 }
 const SupplyCard: React.FC<SupplyCardProps> = ({
-  item,
+  product,
 }) => {
   return (
     <Card
@@ -30,7 +29,11 @@ const SupplyCard: React.FC<SupplyCardProps> = ({
         display: "flex"
       }}
     >
-      <CardContent>
+      <CardContent
+        sx={{
+          height: "100%",
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -39,9 +42,13 @@ const SupplyCard: React.FC<SupplyCardProps> = ({
           }}
         >
           <Avatar
-            src={item.photo}
-            alt={item.name}
+            src={product.image_url}
+            alt={product.product_name}
             variant="rounded"
+            sx={{
+              width: "100px",
+              height: "100px",
+            }}
           />
         </Box>
         <Typography
@@ -50,14 +57,7 @@ const SupplyCard: React.FC<SupplyCardProps> = ({
           variant="h5"
           gutterBottom
         >
-          {item.name}
-        </Typography>
-        <Typography
-          align="center"
-          variant="body1"
-          color="textPrimary"
-        >
-          {item.description}
+          {product.product_name}
         </Typography>
       </CardContent>
       <Divider />
