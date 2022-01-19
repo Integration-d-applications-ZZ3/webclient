@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 const frenchMonths = [
   "Janvier",
   "Février",
@@ -24,12 +26,7 @@ export const lastNmonths = (n: number): string[] => {
 };
 
 export const formatDate = (date: Date): string => {
-  return [date.getDate().toString().padStart(2, "0"),
-    (date.getMonth() + 1).toString().padStart(2, "0"),
-    date.getFullYear()].join("/")
-  + " " + [date.getHours().toString().padStart(2, "0"),
-    date.getMinutes().toString().padStart(2, "0"),
-    date.getSeconds().toString().padStart(2, "0")].join(":");
+  return DateTime.fromJSDate(date).toFormat("dd/MM/yyyy HH:mm:ss");
 };
 
 export const hashCode = (str: string): number => {
