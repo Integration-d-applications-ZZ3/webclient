@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider, useMediaQuery } from "@mui/material";
+import { createTheme, GlobalStyles, ThemeProvider, useMediaQuery } from "@mui/material";
 import React, { useEffect, useMemo, useState } from "react";
 import constants from "../constants";
 import {
@@ -27,11 +27,6 @@ const ColorModeProvider: React.FC = ({ children }) => {
       }
     } catch (error) { /* Empty */ }
   }, []);
-
-  // Astuce dégueulasse pour bypass MUI
-  useEffect(() => {
-    document.body.style.backgroundColor = mode == "light" ? "#F6F9FA" : "";
-  }, [mode]);
   
   const theme = useMemo(() => {
     return createTheme(
@@ -41,6 +36,15 @@ const ColorModeProvider: React.FC = ({ children }) => {
 
   return (
     <ColorModeContext.Provider value={{mode, toggleColorMode}}>
+      <GlobalStyles
+        styles={{
+          "@global": {
+            body: {
+              backgroundColor: mode == "light" ? "#F6F9FA" : "",
+            },
+          },
+        }}
+      />
       <ThemeProvider theme={theme}>
         {children}
       </ThemeProvider>
