@@ -41,6 +41,14 @@ export const theme: ThemeOptions = {
         }
       }
     },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: "8px",
+          boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+        },
+      }
+    },
     MuiCardContent: {
       styleOverrides: {
         root: {
