@@ -22,6 +22,7 @@ import {
   Add as AddIcon,
   Remove as RemoveIcon
 } from "@mui/icons-material";
+import { DateTime } from "luxon";
 
 ChartJS.register(
   CategoryScale,
@@ -57,16 +58,17 @@ const OrderHistoryGraph: React.FC<OrderHistoryGraphProps> = ({
   }
 
   const ordersByMonth = new Array(monthsCount).fill(0);
-  const now = new Date();
+  const now = DateTime.fromMillis(Date.now());
   for (const order of orders.orders) {
-    const orderDate = new Date(order.date);
-    const dateDiff = new Date(now.getTime() - orderDate.getTime());
-    const monthDiff = 12 * (dateDiff.getFullYear() - 1970) 
-      + dateDiff.getMonth(); 
+    const orderDate = DateTime.fromISO(order.date.toString());
+    const dateDiff = now.diff(orderDate, "months");
+    const monthDiff = parseInt(dateDiff.get("months").toFixed());
     if (monthDiff < monthsCount) {
       ordersByMonth[monthDiff]++;
     }
   }
+
+  console.log({ordersByMonth});
 
   return (
     <Card>
