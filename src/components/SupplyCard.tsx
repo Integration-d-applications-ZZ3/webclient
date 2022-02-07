@@ -12,8 +12,11 @@ import {
   AddShoppingCart as AddShoppingCartIcon,
   Info as InfoIcon,
 } from "@mui/icons-material";
-import React from "react";
-import { Product } from "../services/supplierService";
+import React, { useState } from "react";
+import { Product, ResupplyQuery } from "../services/supplierService";
+import AddProductDialog from "./AddProductDialog";
+import { useDispatch } from "react-redux";
+import { productActions } from "../actions/productAction";
 
 interface SupplyCardProps {
   product: Product;
@@ -21,62 +24,87 @@ interface SupplyCardProps {
 const SupplyCard: React.FC<SupplyCardProps> = ({
   product,
 }) => {
+  const dispatch = useDispatch();
+  const [openDialog, setOpenDialog] = useState(false);
+  
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleSubmitDialog = (resupplyQuery: ResupplyQuery) => {
+    setOpenDialog(false);
+    productActions.addNewProduct(resupplyQuery)(dispatch);
+  };
+  
   return (
-    <Card
-      sx={{
-        flexDirection: "column",
-        height: "100%",
-        display: "flex"
-      }}
-    >
-      <CardContent
+    <>
+      <AddProductDialog
+        product={product}
+        open={openDialog}
+        onClose={handleCloseDialog}
+        onSubmit={handleSubmitDialog}
+      />
+      <Card
         sx={{
+          flexDirection: "column",
           height: "100%",
+          display: "flex"
         }}
       >
-        <Box
+        <CardContent
           sx={{
-            display: "flex",
-            pb: 3,
-            justifyContent: "center",
+            height: "100%",
           }}
         >
-          <Avatar
-            src={product.image_url}
-            alt={product.product_name}
-            variant="rounded"
+          <Box
             sx={{
-              width: "100px",
-              height: "100px",
+              display: "flex",
+              pb: 3,
+              justifyContent: "center",
             }}
-          />
-        </Box>
-        <Typography
-          align="center"
-          color="textPrimary"
-          variant="h5"
-          gutterBottom
-        >
-          {product.product_name}
-        </Typography>
-      </CardContent>
-      <Divider />
-      <CardActions>
-        <Button
-          startIcon={<AddShoppingCartIcon />}
-          fullWidth
-        >
-          Commander
-        </Button>
-        <Button
-          startIcon={<InfoIcon />}
-          fullWidth
-          color="secondary"
-        >
-          Informations
-        </Button>
-      </CardActions>
-    </Card>
+          >
+            <Avatar
+              src={product.image_url}
+              alt={product.product_name}
+              variant="rounded"
+              sx={{
+                width: "100px",
+                height: "100px",
+              }}
+            />
+          </Box>
+          <Typography
+            align="center"
+            color="textPrimary"
+            variant="h5"
+            gutterBottom
+          >
+            {product.product_name}
+          </Typography>
+        </CardContent>
+        <Divider />
+        <CardActions>
+          <Button
+            startIcon={<AddShoppingCartIcon />}
+            onClick={handleOpenDialog}
+            fullWidth
+          >
+            Commander
+          </Button>
+          <Button
+            startIcon={<InfoIcon />}
+            fullWidth
+            color="secondary"
+          >
+            Informations
+          </Button>
+        </CardActions>
+      </Card>
+    </>
   );
 };
 
