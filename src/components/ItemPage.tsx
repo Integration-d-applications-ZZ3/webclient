@@ -13,6 +13,7 @@ import { AppDispatch } from "../store";
 import ItemCard from "./ItemCard";
 import BarcodeCard from "./BarcodeCard";
 import ItemOrderHistoryTable from "./ItemOrderHistoryTable";
+import AddStockCard from "./AddStockCard";
 
 interface ItemPageParams {
   id: string;
@@ -81,6 +82,16 @@ const ItemPage: React.FC<ItemPageProps> = ({
           item
         >
           <ItemOrderHistoryTable item={item} />
+        </Grid>
+        <Grid
+          xs={12}
+          sm={12}
+          md={12}
+          lg={6}
+          xl={6}
+          item
+        >
+          <AddStockCard item={item} />
         </Grid>
       </Grid>
     </Box>
