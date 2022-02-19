@@ -99,6 +99,8 @@ const SupplyCard: React.FC<SupplyCardProps> = ({
             startIcon={<InfoIcon />}
             fullWidth
             color="secondary"
+            component="a"
+            href={`https://fr.openfoodfacts.org/produit/${product._id}`}
           >
             Informations
           </Button>
