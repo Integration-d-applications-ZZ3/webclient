@@ -21,6 +21,7 @@ const AddStockCard: React.FC<AddStockCardProps> = ({
       ean: item.ean.toString().padStart(13, "0"),
       quantity: quantity,
     })(dispatch);
+    window.location.reload();
   };
 
   return (
@@ -59,8 +60,8 @@ const AddStockCard: React.FC<AddStockCardProps> = ({
           >
             <TextField
               label="Quantité"
-              variant="standard"
               type="number"
+              variant="outlined"
               value={quantity}
               onChange={e => setQuantity(parseInt(e.target.value))}
             />
