@@ -100,6 +100,7 @@ const SupplyCard: React.FC<SupplyCardProps> = ({
             fullWidth
             color="secondary"
             component="a"
+            target="_blank"
             href={`https://fr.openfoodfacts.org/produit/${product._id}`}
           >
             Informations
