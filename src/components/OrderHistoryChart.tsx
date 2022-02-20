@@ -62,13 +62,11 @@ const OrderHistoryGraph: React.FC<OrderHistoryGraphProps> = ({
   for (const order of orders.orders) {
     const orderDate = DateTime.fromISO(order.date.toString());
     const dateDiff = now.diff(orderDate, "months");
-    const monthDiff = parseInt(dateDiff.get("months").toFixed());
+    const monthDiff = Math.floor(dateDiff.get("months"));
     if (monthDiff < monthsCount) {
       ordersByMonth[monthDiff]++;
     }
   }
-
-  console.log({ordersByMonth});
 
   return (
     <Card>
