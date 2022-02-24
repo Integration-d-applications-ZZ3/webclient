@@ -49,7 +49,7 @@ const ItemOrderHistoryTable: React.FC<ItemOrderHistoryTableProps> = ({
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <Card>
+    <Card sx={{ minHeight: "100%" }}>
       <CardHeader
         title="Historique des commandes"
         subheader={`Commandes contenant l'article ${item.name}`}
@@ -57,7 +57,7 @@ const ItemOrderHistoryTable: React.FC<ItemOrderHistoryTableProps> = ({
       <PerfectScrollbar>
         <Box
           sx={{
-            maxHeight: "250px",
+            maxHeight: "16.5rem",
           }}
         >
           {relatedOrders.length > 0 

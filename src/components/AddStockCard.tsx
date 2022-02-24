@@ -21,7 +21,9 @@ const AddStockCard: React.FC<AddStockCardProps> = ({
       ean: item.ean.toString().padStart(13, "0"),
       quantity: quantity,
     })(dispatch);
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   return (
